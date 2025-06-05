@@ -111,8 +111,10 @@ data/*
 !data/metadata/
 !data/*.py
 !data/*.sh
+!data/*.md
 
 # output
+checkpoints/*
 save/*
 tmp/*
 tmp*
