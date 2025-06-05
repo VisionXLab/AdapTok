@@ -459,13 +459,13 @@ def main(args):
         args.num_samples_total = args.num_samples
     num_jobs = math.ceil(args.num_samples_total / args.num_samples)
 
-    if os.path.exists(args.ar_model):
+    if os.path.exists(args.ar_model) and os.path.isfile(args.ar_model):
         # load model from local checkpoint
         adaptok_ar_model = AdapTok_AR.from_checkpoint(args.ar_model).cuda()
     else:
         # load model from huggingface hub
         adaptok_ar_model = AdapTok_AR.from_pretrained(args.ar_model).cuda()
-    if os.path.exists(args.tokenizer):
+    if os.path.exists(args.tokenizer) and os.path.isfile(args.tokenizer):
         # load model from local checkpoint
         adaptok_tokenizer = model_dict[args.model_type].from_checkpoint(args.tokenizer).cuda()
     else:

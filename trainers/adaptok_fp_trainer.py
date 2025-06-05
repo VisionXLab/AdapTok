@@ -52,7 +52,7 @@ class AdapTokARFramePredictionTrainer(BaseTrainer):
         self.offline_mode = cfg['vae'].get('offline_mode', False)
         self.mode = cfg.model.args.get("mode", "train_default")
         self.fixed_per_block = cfg['vae'].get('fixed_per_block', -1)
-        if os.path.exists(cfg['vae']['checkpoint']):
+        if os.path.exists(cfg['vae']['checkpoint']) and os.path.isfile(cfg['vae']['checkpoint']):
             # load model from local checkpoint
             self.vae = (
                 get_model_cls(cfg['vae']['name'])

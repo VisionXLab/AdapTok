@@ -220,22 +220,7 @@ class Attention(nn.Module):
             xq, keys, values, 
             attn_mask=mask, 
             is_causal=True if mask is None else False, # is_causal=False is for KV cache
-            dropout_p=self.attn_dropout_p if self.training else 0)            
-        
-        # # for debug start
-        # max_len = input_pos.max() + 1
-        # keys = keys[:, :, :max_len]
-        # values = values[:, :, :max_len]
-        # mask = mask[..., :max_len]
-        # output2 = F.scaled_dot_product_attention(
-        #     xq, keys, values, 
-        #     attn_mask=mask, 
-        #     is_causal=True if mask is None else False, # is_causal=False is for KV cache
-        #     dropout_p=self.attn_dropout_p if self.training else 0)            
-        # print((output==output2).all())
-        # print('output1', output.mean().item(), output.std().item(), output.median().item())
-        # print('output2', output2.mean().item(), output2.std().item(), output2.median().item())
-        # # for debug end
+            dropout_p=self.attn_dropout_p if self.training else 0)
 
         output = output.transpose(1, 2).contiguous().view(bsz, seqlen, self.dim)
 

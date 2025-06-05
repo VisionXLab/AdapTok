@@ -49,7 +49,7 @@ def main(args, external_update_params):
         model = model_dict[args.model_type].from_checkpoint(args.tokenizer, external_update_params=external_update_params)
     else:
         # Load tokenizer from HuggingFace Hub
-        model = model_dict[args.model_type].from_pretrained(args.tokenizer)
+        model = model_dict[args.model_type].from_pretrained(args.tokenizer, external_update_params=external_update_params)
 
     if args.det and hasattr(model, 'set_vq_eval_deterministic'):
         model.set_vq_eval_deterministic(deterministic=True)

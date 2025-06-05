@@ -1,5 +1,5 @@
-ar_ckpt=path_to_adaptok_ar.pth
-tokenizer_ckpt=path_to_adaptok.pth
+ar_ckpt=yeahhhh326/AdapTok-AR
+tokenizer_ckpt=yeahhhh326/AdapTok
 output_dir=path_to_save
 
 mkdir -p $output_dir

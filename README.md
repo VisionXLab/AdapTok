@@ -31,6 +31,20 @@ pip install -r requirements.txt
 Prepare the datasets following [data/README.md](data/README.md).
 
 
+## Pretrained Models
+
+We provide pretrained models for AdapTok, AdapTok-Scorer, AdapTok-AR, and AdapTok-FP.
+
+| Model  | FVD         |    🤗 HuggingFace    |
+| --------------------- | ----------- | :-----------------------------------------------------------: |
+| AdapTok |   -- | [yeahhhh326/AdapTok](https://huggingface.co/yeahhhh326/AdapTok) |
+| AdapTok-Scorer  | 28/36   |    [yeahhhh326/AdapTok-Scorer](https://huggingface.co/yeahhhh326/AdapTok-Scorer)   |
+| AdapTok-AR  | 67 (AR)    |   [yeahhhh326/AdapTok-AR](https://huggingface.co/yeahhhh326/AdapTok-AR)   |
+| AdapTok-FP  | 11 (FP)    |   [yeahhhh326/AdapTok-FP](https://huggingface.co/yeahhhh326/AdapTok-FP)   |
+
+Please refer to the **Evaluation** section for details on how to use these models.
+
+
 ## Training
 
 ### Training AdapTok

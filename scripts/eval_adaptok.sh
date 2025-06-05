@@ -1,4 +1,4 @@
-tokenizer_path=path_to_scorer.pth
+tokenizer_path=yeahhhh326/AdapTok-Scorer
 
 python eval/eval_adaptok.py \
     --score_type perceptual \

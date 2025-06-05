@@ -10,6 +10,10 @@ from huggingface_hub import PyTorchModelHubMixin
 from easydict import EasyDict as edict
 from collections import defaultdict
 
+from safetensors.torch import load_file
+from transformers import PretrainedConfig
+from huggingface_hub import hf_hub_download, snapshot_download
+
 import models
 import utils
 from models import register
@@ -490,6 +494,38 @@ class AdapTok(nn.Module, PyTorchModelHubMixin):
             model.load_state_dict(sd, strict=True)
         return model
     
+    @classmethod
+    def from_pretrained(cls, ckpt, external_update_params=None):
+        if not os.path.isdir(ckpt):
+            config_path = snapshot_download(
+                repo_id=ckpt,
+                allow_patterns="config.json"
+            )
+            weight_path = hf_hub_download(
+                repo_id=ckpt,
+                filename="model.safetensors"
+            )
+        else:
+            config_path = os.path.join(ckpt, "config.json")
+            weight_path = os.path.join(ckpt, "model.safetensors")
+            
+        config = PretrainedConfig.from_pretrained(config_path)
+        kwargs = config.to_dict()
+
+        if external_update_params:
+            assert len(external_update_params) % 2 == 0, "Invalid external_update_params format"
+            for i in range(0, len(external_update_params), 2):
+                key_path = external_update_params[i].split('.')
+                value = convert_value(external_update_params[i + 1])
+                set_nested_value(kwargs, key_path, value)
+
+        model = cls(**kwargs)
+
+        state_dict = load_file(weight_path)
+        model.load_state_dict(state_dict)
+
+        return model
+
 
     def forward(self, data, iter_mode="default", **kwargs):
         if iter_mode == "encode_only":
