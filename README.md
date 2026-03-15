@@ -124,12 +124,12 @@ Our code is built upon [LARP](https://github.com/hywang66/LARP). Thanks for thei
 If you find this code useful in your research, please consider citing:
 ```
 @misc{li2025learningadaptivetemporallycausal,
-      title={Learning Adaptive and Temporally Causal Video Tokenization in a 1D Latent Space}, 
-      author={Yan Li and Changyao Tian and Renqiu Xia and Ning Liao and Weiwei Guo and Junchi Yan and Hongsheng Li and Jifeng Dai and Hao Li and Xue Yang},
-      year={2025},
-      eprint={2505.17011},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2505.17011}, 
+  title={Learning Adaptive and Temporally Causal Video Tokenization in a 1D Latent Space},
+  author={Li, Yan and Tian, Changyao and Xia, Renqiu and Liao, Ning and Guo, Weiwei and Yan, Junchi and Li, Hongsheng and Dai, Jifeng and Li, Hao and Yang, Xue},
+  year={2025},
+  eprint={2505.17011},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2505.17011},
 }
 ```
